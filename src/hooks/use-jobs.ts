@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { Job } from '@/types/job';
+import  routes  from '@/app/api/routes';
 
 export interface JobsResponse {
   data: Job[];
@@ -12,7 +13,8 @@ export interface JobsResponse {
 }
 
 const fetchJobs = async (page = 1, limit = 10): Promise<JobsResponse> => {
-  const response = await fetch(`/api/jobs?page=${page}&limit=${limit}`);
+  const url = routes.JOB_LIST({ page, limit });
+  const response = await fetch(url);
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
