@@ -1,0 +1,12 @@
+# Copy this content and add it to your .env.local file
+# Replace the placeholder values with your actual Airtable credentials
+
+# Airtable Configuration
+# Get these from: https://airtable.com/api (select your base)
+NEXT_PUBLIC_AIRTABLE_BASE_ID=appXXXXXXXXXXXXXX
+NEXT_PUBLIC_AIRTABLE_TABLE_NAME=YourTableName
+NEXT_PUBLIC_AIRTABLE_VIEW_NAME=YourViewName
+
+# Get this from: https://airtable.com/account
+# IMPORTANT: Keep this secret! This should NOT have NEXT_PUBLIC_ prefix
+AIRTABLE_API_KEY=keyXXXXXXXXXXXXXX

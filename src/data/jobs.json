@@ -1,0 +1,35 @@
+[
+  {
+    "id": "a10ea656-4d1e-49da-a53a-25bad2c532b6",
+    "jobTitle": "devops",
+    "jobDescription": "pro in devops",
+    "employmentType": "temporary",
+    "experienceRequired": "10",
+    "jobLocation": "indore,M.P",
+    "workMode": "remote",
+    "vacancies": 5,
+    "createdAt": "2026-01-13T11:25:39.933Z"
+  },
+  {
+    "id": "de7820f3-b228-4514-ad6f-55134b0e358d",
+    "jobTitle": "frontend-se",
+    "jobDescription": "a guy who can play with the frontend",
+    "employmentType": "part_time",
+    "experienceRequired": "1",
+    "jobLocation": "indore,M.P",
+    "workMode": "hybrid",
+    "vacancies": 3,
+    "createdAt": "2026-01-13T11:15:42.329Z"
+  },
+  {
+    "id": "e5b62e28-46cd-4dfb-b4e0-e7563d646328",
+    "jobTitle": "developer back-se ",
+    "jobDescription": "we wan someone who can play with backend well and familier with the front-end also",
+    "employmentType": "part_time",
+    "experienceRequired": "2",
+    "jobLocation": "new york",
+    "workMode": "hybrid",
+    "vacancies": 1,
+    "createdAt": "2026-01-13T11:07:10.350Z"
+  }
+]
