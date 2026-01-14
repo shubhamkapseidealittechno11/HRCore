@@ -12,7 +12,7 @@ export default function JobSchedulePage() {
   const pageSize = 10
   
   const { data, isLoading, isError } = useJobs(page, pageSize)
-console.log("data",data)
+  
   const handlePageChange = (newPage: number) => {
     setPage(newPage)
   }

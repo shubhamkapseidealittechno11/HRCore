@@ -3,7 +3,7 @@
 
 import { ColumnDef } from "@tanstack/react-table"
 import { Job } from "@/types/job"
-import { MoreHorizontal, Trash } from "lucide-react"
+import { MoreHorizontal, Trash, UserPlus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -17,12 +17,14 @@ import { useQueryClient } from "@tanstack/react-query"
 import JobScheduleApi from "@/app/api/job-scheduleApi"
 import { toast } from "sonner"
 import { useState } from "react"
+import { AddCandidateDialog } from "@/components/jobs/add-candidate-dialog";
 
 // Create a component for the Action Cell to use hooks
 const ActionCell = ({ job }: { job: Job }) => {
   const queryClient = useQueryClient();
   const { deleteJob } = JobScheduleApi();
   const [isDeleting, setIsDeleting] = useState(false);
+  const [showAddCandidateDialog, setShowAddCandidateDialog] = useState(false);
 
   const handleDelete = async () => {
     try {
@@ -38,31 +40,45 @@ const ActionCell = ({ job }: { job: Job }) => {
   };
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="h-8 w-8 p-0">
-          <span className="sr-only">Open menu</span>
-          <MoreHorizontal className="h-4 w-4" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-        <DropdownMenuItem
-          onClick={() => navigator.clipboard.writeText(job.id)}
-        >
-          Copy Job ID
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem 
-          onClick={handleDelete}
-          disabled={isDeleting}
-          className="text-red-600 focus:text-red-600 focus:bg-red-50 dark:focus:bg-red-900/10 cursor-pointer"
-        >
-          <Trash className="mr-2 h-4 w-4" />
-          {isDeleting ? "Deleting..." : "Delete Job"}
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <>
+      <AddCandidateDialog 
+        jobId={job.id} 
+        open={showAddCandidateDialog} 
+        onOpenChange={setShowAddCandidateDialog} 
+      />
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" className="h-8 w-8 p-0">
+            <span className="sr-only">Open menu</span>
+            <MoreHorizontal className="h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuItem
+            onClick={() => setShowAddCandidateDialog(true)}
+          >
+            <UserPlus className="mr-2 h-4 w-4" />
+            Add Candidate
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => window.location.href = `/job-schedule/${job.id}`}
+          >
+            <MoreHorizontal className="mr-2 h-4 w-4" />
+            View Details
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem 
+            onClick={handleDelete}
+            disabled={isDeleting}
+            className="text-red-600 focus:text-red-600 focus:bg-red-50 dark:focus:bg-red-900/10 cursor-pointer"
+          >
+            <Trash className="mr-2 h-4 w-4" />
+            {isDeleting ? "Deleting..." : "Delete Job"}
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </>
   );
 };
 
@@ -102,6 +118,11 @@ export const columns: ColumnDef<Job>[] = [
     accessorKey: "vacancies",
     header: "Vacancies",
     cell: ({ row }) => <div className="font-medium">{row.getValue("vacancies")}</div>,
+  },
+  {
+    accessorKey: "totalCandidates",
+    header: "Candidates",
+    cell: ({ row }) => <div className="font-medium">{row.getValue("totalCandidates") || 0}</div>,
   },
   {
     id: "actions",

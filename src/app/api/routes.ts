@@ -24,6 +24,10 @@ const routes = {
   CREATE_JOB:()=>`${userBaseUrl}/jobs/`,
   DELETE_JOB:(id:any)=>`${userBaseUrl}/jobs/${id}`,
   CANDIDATE_LIST:(params :any)=>`${userBaseUrl}/resumes/my-candidates?page=${params.page}&limit=${params.limit}`,
+   USER_RESULT_DETAIL:(id:any) => `${userBaseUrl}/results/${id}`,
+  CREATE_JOB_SCHEDULE:(id:any)=>`${userBaseUrl}/jobs/${id}/apply`,
+  JOB_DETAIL:(id:any)=>`${userBaseUrl}/jobs/${id}`,
+
   };
 
 

@@ -11,6 +11,7 @@ export interface Job {
   jobLocation: string;
   workMode: WorkMode;
   vacancies: number;
+  totalCandidates: number;
   createdAt: string;
 }
 

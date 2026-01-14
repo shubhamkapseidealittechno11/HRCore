@@ -75,6 +75,7 @@ const AuthService = () => {
         htmlContainer: 'swal-theme-text',
         confirmButton: 'swal-theme-confirm',
         cancelButton: 'swal-theme-cancel',
+        actions: 'swal-theme-actions',
       },
     }).then(async (result: any) => {
       try {

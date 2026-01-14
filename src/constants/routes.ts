@@ -16,14 +16,14 @@ export const PROTECTED_ROUTES = [
     label: "Job Schedule",
     icon: Briefcase,
   },
-  {
-    path: "/schedule",
-    label: "Schedule",
-    icon: Calendar,
-  },
+  // {
+  //   path: "/schedule",
+  //   label: "Schedule",
+  //   icon: Calendar,
+  // },
   {
     path: "/user-results",
-    label: "User Results",
+    label: "Interview Results",
     icon: FileText,
   },
 ];

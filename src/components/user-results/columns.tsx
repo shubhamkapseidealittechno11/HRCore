@@ -1,6 +1,8 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
+import { Button } from "@/components/ui/button"
+import { Eye } from "lucide-react"
 
 export interface InterviewResult {
   _id: string;
@@ -58,5 +60,26 @@ export const columns: ColumnDef<InterviewResult>[] = [
         const score = row.getValue("scoreTech") as number | null;
         return <span>{score !== null && score !== undefined ? score : "N/A"}</span>
     }
-  }
+  },
+  {
+    id: "actions",
+    header: "Actions",
+    cell: ({ row }) => {
+      const result = row.original;
+      
+      return (
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => {
+            window.location.href = `/user-results/${result._id}`;
+          }}
+          className="h-8 px-2 lg:px-3"
+        >
+          <Eye className="h-4 w-4 mr-2" />
+          View Details
+        </Button>
+      )
+    },
+  },
 ]
